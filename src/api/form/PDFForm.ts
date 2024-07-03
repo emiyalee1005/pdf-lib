@@ -599,6 +599,7 @@ export default class PDFForm {
     for (let childIndex = 0; childIndex < kidsCount; childIndex++) {
       const child = fieldKids.get(childIndex);
       if (child instanceof PDFRef) {
+        pages.forEach((page) => page.node.removeAnnot(child));
         this.doc.context.delete(child);
       }
     }
