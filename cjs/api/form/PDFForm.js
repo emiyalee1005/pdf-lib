@@ -482,6 +482,9 @@ var PDFForm = /** @class */ (function () {
      * ```
      */
     PDFForm.prototype.removeField = function (field) {
+        if (field.needsAppearancesUpdate()) {
+            field.defaultUpdateAppearances(this.getDefaultFont());
+        }
         var widgets = field.acroField.getWidgets();
         var pages = new Set();
         for (var i = 0, len = widgets.length; i < len; i++) {

@@ -579,6 +579,9 @@ export default class PDFForm {
    * ```
    */
   removeField(field: PDFField) {
+    if (field.needsAppearancesUpdate()) {
+      field.defaultUpdateAppearances(this.getDefaultFont());
+    }
     const widgets = field.acroField.getWidgets();
     const pages: Set<PDFPage> = new Set();
 
